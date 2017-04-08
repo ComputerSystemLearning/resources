@@ -1,0 +1,62 @@
+
+/**
+* 此文件收纳了孔建军学长历次讨论会分享的文本
+*/
+
+Linux高性能服务器编程——进程池和线程池
+http://www.tuicool.com/articles/BBBfYnR
+
+******
+
+支持协程的编程语言:
+Simula
+Modula-2
+C#
+Stackless Python
+Lua
+Io
+Go
+JavaScript
+
+******
+
+Python代码格式监测工具
+
+1. 通过pip网络安装inspektor
+sudo pip install inspektor
+
+2. inspekt indent
+   inspekt style
+   ...
+
+3. 可以在github配置对提交的代码自动检测格式
+
+4. 对于github上的私有项目，https://semaphoreci.com/ 提供每月100次的免费格式检测
+
+******
+
+https://github.com/fastio/pedis  阿里巴巴一个工程师开发的 Parallel Redis
+
+******
+
+周三讨论中提到的，使用多线程快速从查询大块数据
+
+相关博客：
+http://www.scylladb.com/2017/02/13/efficient-full-table-scans-with-scylla-1-6/
+
+代码：
+https://github.com/mengalong/full_table_scan_scylla
+
+******
+
+QEMU-KVM: http://www.qemu-project.org/
+github: https://github.com/qemu/qemu
+https://vmsplice.net/~stefan/qemu-code-overview.pdf (QEMU架构介绍)
+https://github.com/qemu/qemu/blob/master/vl.c 入口,main-loop
+
+QEMU是用来模拟、虚拟多平台硬件的。每个虚拟cpu用一个线程实现，由Linux内核调度。
+vl.c:main() 中有一个大的循环，在每次循环里，要先执行指令，处理io，
+这个和那天分享的程序很类似，这也是进程、线程的一种应用，
+而且虚拟机里各种设备工作比较复杂(和真实硬件逻辑上一样)
+对于关键的io任务会使用单独的线程，比如网络、磁盘。
+为了提高性能，采用多任务队列(multiple queue: https://www.linux-kvm.org/page/Multiqueue)
