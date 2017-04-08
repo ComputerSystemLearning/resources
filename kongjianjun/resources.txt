@@ -1,7 +1,8 @@
 
 /**
-* 此文件收纳了孔建军学长历次讨论会分享的文本
+* 此文件收纳了孔建军学长分享的文本
 */
+
 
 Linux高性能服务器编程——进程池和线程池
 http://www.tuicool.com/articles/BBBfYnR
